@@ -1,0 +1,39 @@
+<nav class="navbar navbar-expand-md bg-body-light border-bottom sticky-top">
+  <div class="container-fluid">
+    <a class="navbar-brand ms-3" href="/listings"><i class="fa-regular fa-compass"></i></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav w-100 bg-body-light">
+        <a class="nav-link" href="/listings">Explore</a>
+
+        <div class="navbar-nav ms-auto">
+          <form class="d-flex" role="search">
+            <input class="form-control me-2 searchBar" type="search" placeholder="Search" aria-label="Search"/>
+            <button class="btn btn-dark searchBtn" type="submit"><i class="fa-solid fa-magnifying-glass"></i>Search</button>
+          </form>
+        </div>
+
+        <div class="navbar-nav ms-auto mx-5 ">
+          <a class="nav-link" href="/listings/new">Add New Listing</a>
+          <div class="dropdown me-5 ms-3">
+            <a class="btn btn-outline-dark dropdown-toggle pe-3 ps-3" href="/" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="fa-regular fa-user"></i>
+            </a>
+
+            <ul class="dropdown-menu">
+              <% if (!currUser) {%>
+                <li><a class="dropdown-item" href="/signup">SignUp</a></li>
+                <li><a class="dropdown-item" href="/login">Login</a></li>
+              <% } %>
+              <% if (currUser) {%>
+                <li><a class="dropdown-item" href="/logout">Logout</a></li>
+              <% } %>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>

@@ -98,7 +98,7 @@ Travaura/
 ## 🖼️ Screenshots
 
 ### 🏠 Home Page
-![Home Page](./screenshots/Screenshot 2025-07-09 212230.png)
+![Home Page](screenshots/Screenshot 2025-07-09 212230.png)
 
 ### 📝 Listing Form
 ![Create Listing](sandbox:/mnt/data/Screenshot 2025-07-09 212306.png)

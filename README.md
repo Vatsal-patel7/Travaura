@@ -98,13 +98,16 @@ Travaura/
 ## 🖼️ Screenshots
 
 ### 🏠 Home Page
-![Home Page](screenshots/Screenshot 2025-07-09 212230.png)
+![Screenshot 2025-07-09 212230](https://github.com/user-attachments/assets/11f75a55-586c-4ae8-a6e5-e0bda776f317)
+
 
 ### 📝 Listing Form
-![Create Listing](sandbox:/mnt/data/Screenshot 2025-07-09 212306.png)
+![Screenshot 2025-07-09 212306](https://github.com/user-attachments/assets/1e1857b9-bc50-445e-b05c-54d0edc68ab0)
+
 
 ### 🗺️ Map Integration
-![Map Integration](sandbox:/mnt/data/Screenshot 2025-07-09 212433.png)
+![Screenshot 2025-07-09 212433](https://github.com/user-attachments/assets/07bf241f-1933-4590-bbc1-174dddb43711)
+
 
 ---
 

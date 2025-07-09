@@ -98,15 +98,13 @@ Travaura/
 ## 🖼️ Screenshots
 
 ### 🏠 Home Page
-![Home](https://user-images.githubusercontent.com/your-image-link/homepage.png)
+![Home Page](sandbox:/mnt/data/Screenshot 2025-07-09 212230.png)
 
 ### 📝 Listing Form
-![Form](https://user-images.githubusercontent.com/your-image-link/form.png)
+![Create Listing](sandbox:/mnt/data/Screenshot 2025-07-09 212306.png)
 
 ### 🗺️ Map Integration
-![Map](https://user-images.githubusercontent.com/your-image-link/map.png)
-
-> 💡 Tip: Replace the placeholder image links with your own hosted screenshots (e.g., from Imgur, GitHub issues, or Cloudinary).
+![Map Integration](sandbox:/mnt/data/Screenshot 2025-07-09 212433.png)
 
 ---
 

@@ -1,9 +1,11 @@
 const Listing = require("../models/listing.js");
 const axios = require("axios");
 
+
 module.exports.index = async (req, res) => {
     const { search, category } = req.query;
     let filter = {};
+
 
     if (search) {
         // Search by title (case-insensitive)
@@ -14,8 +16,10 @@ module.exports.index = async (req, res) => {
         filter.category = category;
     }
 
+
     // Fetch listings with filter applied
     const allListings = await Listing.find(filter);
+
 
     // Pass the current filters back to the template for sticky inputs
     res.render("listings/index.ejs", {
@@ -26,9 +30,13 @@ module.exports.index = async (req, res) => {
 };
 
 
+
 module.exports.renderNewForm = (req,res) => {
-    res.render("listings/new.ejs");
+    res.render("listings/new.ejs", {
+        search: ""
+    });
 };
+
 
 module.exports.createListing = async (req,res,next) => {
     try {
@@ -38,9 +46,11 @@ module.exports.createListing = async (req,res,next) => {
         newListing.owner = req.user._id;
         newListing.image = { url, filename };
 
+
         // Get coordinates for the location
         const location = req.body.listing.location;
         let coords = { lat: 0, lng: 0 }; // Default fallback
+
 
         if (location) {
             try {
@@ -55,6 +65,7 @@ module.exports.createListing = async (req,res,next) => {
                     }
                 });
 
+
                 if (geoResponse.data && geoResponse.data.length > 0) {
                     coords = {
                         lat: parseFloat(geoResponse.data[0].lat),
@@ -67,6 +78,7 @@ module.exports.createListing = async (req,res,next) => {
             }
         }
 
+
         newListing.coordinates = coords;
         await newListing.save();
         
@@ -78,6 +90,7 @@ module.exports.createListing = async (req,res,next) => {
         res.redirect("/listings/new");
     }
 };
+
 
 module.exports.showListing = async (req,res) => {
     try {
@@ -96,13 +109,17 @@ module.exports.showListing = async (req,res) => {
             return res.redirect("/listings");
         }
         
-        res.render("listings/show.ejs", {List});
+        res.render("listings/show.ejs", {
+            List,
+            search: ""
+        });
     } catch (error) {
         console.error('Error showing listing:', error);
         req.flash("error", "Error loading listing");
         res.redirect("/listings");
     }
 };
+
 
 module.exports.renderEditForm = async (req,res) => {
     try {
@@ -114,15 +131,21 @@ module.exports.renderEditForm = async (req,res) => {
             return res.redirect("/listings");
         }
 
+
         let originalUrl = list.image.url;
         originalUrl = originalUrl.replace("/upload", "/upload/w_250");
-        res.render("listings/edit.ejs", { list, originalUrl });
+        res.render("listings/edit.ejs", { 
+            list, 
+            originalUrl,
+            search: ""
+        });
     } catch (error) {
         console.error('Error loading edit form:', error);
         req.flash("error", "Error loading listing");
         res.redirect("/listings");
     }
 };
+
 
 module.exports.updateListing = async (req,res) => {
     try {
@@ -134,6 +157,7 @@ module.exports.updateListing = async (req,res) => {
             let filename = req.file.filename;
             listing.image = { url, filename };
         }
+
 
         // Update coordinates if location changed
         const location = req.body.listing.location;
@@ -150,6 +174,7 @@ module.exports.updateListing = async (req,res) => {
                     }
                 });
 
+
                 if (geoResponse.data && geoResponse.data.length > 0) {
                     listing.coordinates = {
                         lat: parseFloat(geoResponse.data[0].lat),
@@ -161,6 +186,7 @@ module.exports.updateListing = async (req,res) => {
             }
         }
 
+
         await listing.save();
         req.flash("success", "Listing Updated!!");
         res.redirect(`/listings/${id}`);
@@ -170,6 +196,7 @@ module.exports.updateListing = async (req,res) => {
         res.redirect(`/listings/${id}/edit`);
     }
 };
+
 
 module.exports.deleteListing = async (req,res) => {
     try {

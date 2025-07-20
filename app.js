@@ -63,10 +63,6 @@ const sessionOption = {
     }
 };
 
-app.get("/",(req,res) => {
-    res.redirect("/listings");
-});
-
 app.use(session(sessionOption));
 app.use(flash());
 
@@ -81,6 +77,13 @@ app.use((req,res,next) => {
     res.locals.error = req.flash("error");
     res.locals.currUser = req.user;
     next();
+});
+
+app.get("/", (req, res) => {
+    res.render("listings/landing.ejs", {
+        currUser: req.user || null,
+        search: ""  
+    });
 });
 
 app.use("/listings", listings);

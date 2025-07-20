@@ -1,10 +1,30 @@
 const Listing = require("../models/listing.js");
 const axios = require("axios");
 
-module.exports.index = async (req,res) => {
-    let allListings = await Listing.find();
-    res.render("listings/index.ejs", {allListings});
+module.exports.index = async (req, res) => {
+    const { search, category } = req.query;
+    let filter = {};
+
+    if (search) {
+        // Search by title (case-insensitive)
+        filter.title = { $regex: search, $options: "i" };
+    }
+    if (category && category !== "all") {
+        // Filter by category
+        filter.category = category;
+    }
+
+    // Fetch listings with filter applied
+    const allListings = await Listing.find(filter);
+
+    // Pass the current filters back to the template for sticky inputs
+    res.render("listings/index.ejs", {
+        allListings,
+        search: search || "",
+        category: category || "all"
+    });
 };
+
 
 module.exports.renderNewForm = (req,res) => {
     res.render("listings/new.ejs");

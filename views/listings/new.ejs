@@ -32,20 +32,39 @@
                     <div class="invalid-feedback">Price should be valid!!</div>
                 </div>
 
-                <div class="mb-3 col-md-8">
+                <div class="mb-3 col-8">
+                    <label for="category" class="form-label">Category</label>
+                    <select name="listing[category]" id="category" class="form-select" required>
+                        <option value="Trending">Trending</option>
+                        <option value="Rooms">Rooms</option>
+                        <option value="Iconic cities">Iconic cities</option>
+                        <option value="Mountains">Mountains</option>
+                        <option value="Castles">Castles</option>
+                        <option value="Amazing pools">Amazing pools</option>
+                        <option value="Camping">Camping</option>
+                        <option value="Farms">Farms</option>
+                        <option value="Artic">Artic</option>
+                        <option value="Boat">Boat</option>     
+                    </select>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="mb-3 col-md-6">
                     <label for="location" class="form-label">Location</label>
                     <input type="text" name="listing[location]" placeholder="Enter Location" class="form-control" required>
                     <div class="valid-feedback">Looks good!</div>
                     <div class="invalid-feedback">Location should be valid!!</div>
                 </div>
-            </div>
 
-            <div class="mb-3">
-                <label for="country" class="form-label">Country</label>
-                <input type="text" name="listing[country]" placeholder="Enter Country" class="form-control" required>
-                <div class="valid-feedback">Looks good!</div>
-                <div class="invalid-feedback">Country name should be valid!!</div>
+                <div class="mb-3 col-md-6">
+                    <label for="country" class="form-label">Country</label>
+                    <input type="text" name="listing[country]" placeholder="Enter Country" class="form-control" required>
+                    <div class="valid-feedback">Looks good!</div>
+                    <div class="invalid-feedback">Country name should be valid!!</div>
+                </div>
             </div>
+            
             <button class="btn btn-dark add-btn mt-3">Add</button>
             <br><br>
         </form>
